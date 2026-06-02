@@ -1,14 +1,16 @@
 import { useState } from "react";
+
 function App() {
   const [students, setStudents] = useState([]);
   const [input, setInput] = useState("");
 
     function addStudent() {
-      if (input.trim()) return;
+      if (!input.trim()) return;
 
       setStudents([...students, input]);
       setInput("");
     }
+
   return (
     <div>
       <h1>Seating Chart Generator</h1>
@@ -16,7 +18,7 @@ function App() {
       {/* INPUT BOX */}
       <input
         value={input}
-        onChange={e => setInput(e.target.value)}
+        onChange={(e) => setInput(e.target.value)}
         placeholder="Enter student name"
       />
       
@@ -24,9 +26,9 @@ function App() {
         Add Student
       </button>
       
-      // STUDENT LIST
+      {/* STUDENT LIST */}
       {students.map((student, index) => (
-        <div key={student}>
+        <div key={index}>
           {student}
         </div>
       ))}
