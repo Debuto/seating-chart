@@ -1,10 +1,11 @@
+import { useState } from "react";
 function App() {
-  const students = [
+  const [students, setStudents] = useState([
     "Alice",
     "Bob",
     "Charlie",
     "David"
-  ];
+  ]);
 
   return (
     <div>
