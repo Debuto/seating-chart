@@ -1,11 +1,7 @@
 import { useState } from "react";
 function App() {
-  const [students, setStudents] = useState([
-    "Alice",
-    "Bob",
-    "Charlie",
-    "David"
-  ]);
+  const [students, setStudents] = useState([]);
+  const [input, setInput] = useState("");
 
   return (
     <div>
