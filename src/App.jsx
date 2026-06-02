@@ -3,19 +3,30 @@ import { useState } from "react";
 function App() {
   const [students, setStudents] = useState([]);
   const [input, setInput] = useState("");
+  const [bulkInput, setBulkInput] = useState("");
 
-    function addStudent() {
-      if (!input.trim()) return;
+  function addStudent() {
+    if (!input.trim()) return;
 
-      setStudents([...students, input]);
-      setInput("");
-    }
+    setStudents(prev => [...prev, input]);
+    setInput("");
+  }
+
+  function importStudents() {
+    const names = bulkInput
+      .split("\n")
+      .map(name => name.trim())
+      .filter(name => name !== "");
+
+    setStudents(prev => [...prev, ...names]);
+    setBulkInput("");
+  }
 
   return (
     <div>
       <h1>Seating Chart Generator</h1>
 
-      {/* INPUT BOX */}
+      {/* SINGLE INPUT */}
       <input
         value={input}
         onChange={(e) => setInput(e.target.value)}
@@ -26,11 +37,22 @@ function App() {
         }}
         placeholder="Enter student name"
       />
-      
+
       <button onClick={addStudent}>
         Add Student
       </button>
-      
+
+      {/* BULK INPUT */}
+      <textarea
+        value={bulkInput}
+        onChange={(e) => setBulkInput(e.target.value)}
+        placeholder="Paste names from Excel (one per line)"
+      />
+
+      <button onClick={importStudents}>
+        Add bulk list of Students
+      </button>
+
       {/* STUDENT LIST */}
       {students.map((student, index) => (
         <div key={index}>
