@@ -11,6 +11,7 @@ function App() {
     <div>
       <h1>Seating Chart Generator</h1>
 
+      {/* show all students */}
       {students.map(student => (
         <div key={student}>
           {student}
