@@ -4,6 +4,8 @@ function App() {
   const [students, setStudents] = useState([]);
   const [input, setInput] = useState("");
   const [bulkInput, setBulkInput] = useState("");
+  {/*generated seating chart*/}
+  const [seats, setSeats] = useState([]);
 
   function addStudent() {
     if (!input.trim()) return;
@@ -20,6 +22,11 @@ function App() {
 
     setStudents(prev => [...prev, ...names]);
     setBulkInput("");
+  }
+
+  function generateSeating() {
+    const shuffled = [...students].sort(() => Math.random() - 0.5);
+    setSeats(shuffled);
   }
 
   return (
@@ -52,6 +59,10 @@ function App() {
       <button onClick={importStudents}>
         Add bulk list of Students
       </button>
+      
+      <button onClick={generateSeating}>
+        Generate Seating Chart
+      </button>
 
       {/* STUDENT LIST */}
       {students.map((student, index) => (
@@ -59,6 +70,14 @@ function App() {
           {student}
         </div>
       ))}
+
+      <div className="seat-grid">
+      {seats.map((student, index) => (
+        <div className="seat-card" key={index}>
+          {student}
+        </div>
+      ))}
+    </div>
     </div>
   );
 }
