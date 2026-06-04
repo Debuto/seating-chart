@@ -1,10 +1,11 @@
 import { useState } from "react";
+import "./App.css";
 
 function App() {
   const [students, setStudents] = useState([]);
   const [input, setInput] = useState("");
   const [bulkInput, setBulkInput] = useState("");
-  {/*generated seating chart*/}
+  // generated seating chart
   const [seats, setSeats] = useState([]);
 
   function addStudent() {
