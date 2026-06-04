@@ -72,6 +72,10 @@ function App() {
         </div>
       ))}
 
+      <button onClick={() => setStudents([])}>
+              Clear Students
+      </button>
+      
       <div className="seat-grid">
       {seats.map((student, index) => (
         <div className="seat-card" key={index}>
@@ -79,6 +83,9 @@ function App() {
         </div>
       ))}
     </div>
+
+    
+
     </div>
   );
 }
